@@ -11,15 +11,24 @@ public class ATM {
         User user2 = swed.addNewUser("Alex", "Vasilyev", "4321");
         System.out.printf("Welcome to %s  \n", swed.getName());
 
-//      User input
+//      User input and access check
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter User ID: ");
-        String userUuid = scanner.nextLine();
-        System.out.println("Enter User pin: ");
-        String userPin = scanner.nextLine();
+        boolean access = false;
+        while ( access == false ){
+            System.out.println("Enter User ID: ");
+            String userUuid = scanner.nextLine();
+            System.out.println("Enter User pin: ");
+            String userPin = scanner.nextLine();
+            access = swed.getAccess(userUuid, userPin);
+            if (access == true) {
+                break;
+            }
+            System.out.println("Data is wrong, try again");
+        }
 
-//      Acces check
-        boolean access = swed.getAccess(userUuid, userPin);
+
+
+
 
 
     }
