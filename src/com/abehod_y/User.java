@@ -4,7 +4,6 @@ package com.abehod_y;
 import java.util.ArrayList;
 
 public class User {
-
     private String name;
     private String surname;
     private String uuid;
@@ -19,11 +18,23 @@ public class User {
         System.out.printf("The user %s %s with id %s was created \n", this.name, this.surname, this.uuid);
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
     public String getUuid() {
         return uuid;
     }
 
     public String getPin() {
         return pin;
+    }
+
+    public ArrayList<Account> getAccounts(Bank theBank) {
+        return theBank.getAccounts(this);
     }
 }

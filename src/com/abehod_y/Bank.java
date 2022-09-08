@@ -2,6 +2,7 @@ package com.abehod_y;
 
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.UUID;
 
 public class Bank {
@@ -26,30 +27,34 @@ public class Bank {
         return newUser;
     }
 
-    public boolean getAccess(String uuid, String pin) {
+    public User getUser(String uuid, String pin) {
        for (User user : this.users) {
             if (user.getUuid().equals(uuid) && user.getPin().equals(pin)) {
-                return true;
+                return user;
             }
         }
-        return false;
+        return null;
     }
 
     public String getNewUserUuid() {
         return UUID.randomUUID().toString().replace("-", "").substring(0, 8);
     }
 
-    public void addNewAccount(String name, User user){
-        Account account = new Account(name, user);
+    public Account addNewAccount(User user){
+        Random random = new Random();
+        Account account = new Account(
+                random.ints().iterator().next().toString(),
+                user);
         this.accounts.add(account);
+        return account;
     }
 
-    @Override
-    public String toString() {
-        return "Bank{" +
-                "name='" + name + '\'' +
-                ", users=" + users +
-                ", accounts=" + accounts +
-                '}';
+    public ArrayList<Account> getAccounts(User user) {
+        ArrayList<Account> userAccounts = new ArrayList<>();
+        for (Account account : accounts){
+            if (account.getUser().equals(user)) userAccounts.add(account);
+        }
+        return userAccounts;
     }
 }
+
