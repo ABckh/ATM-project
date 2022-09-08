@@ -1,10 +1,17 @@
 package com.abehod_y;
 
+
+import java.util.Scanner;
+
 public class ATM {
     public static void main(String[] args) {
 
-        User yura = new User("Yura", "Abykhodau");
-        System.out.println(yura.toString());
+
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter your uuid: ");
+        String userUuid = scanner.nextLine();
+
 
     }
 }

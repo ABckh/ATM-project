@@ -1,28 +1,23 @@
 package com.abehod_y;
 
+
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class User {
 
     private String name;
     private String surname;
-    private String userId;
+    private String uuid;
+    private String pin;
     private ArrayList<Account> accounts;
 
-    public User(String name, String surname) {
+    public User(String name, String surname, String pin, Bank theBank) {
         this.name = name;
         this.surname = surname;
-        this.userId = UUID.randomUUID().toString().replace("-","").substring(0,8);
+        this.pin = pin;
+        this.uuid = theBank.getNewUserUuid();
+        System.out.printf("The user %s %s with id %s was created", this.name, this.surname, this.uuid);
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", userId='" + userId + '\'' +
-                ", accounts=" + accounts +
-                '}';
-    }
+
 }
