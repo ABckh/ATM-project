@@ -16,8 +16,14 @@ public class User {
         this.surname = surname;
         this.pin = pin;
         this.uuid = theBank.getNewUserUuid();
-        System.out.printf("The user %s %s with id %s was created", this.name, this.surname, this.uuid);
+        System.out.printf("The user %s %s with id %s was created \n", this.name, this.surname, this.uuid);
     }
 
+    public String getUuid() {
+        return uuid;
+    }
 
+    public String getPin() {
+        return pin;
+    }
 }
