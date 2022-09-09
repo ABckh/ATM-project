@@ -15,6 +15,7 @@ public class User {
         this.surname = surname;
         this.pin = pin;
         this.uuid = theBank.getNewUserUuid();
+        this.accounts = new ArrayList<>();
         System.out.printf("The user %s %s with id %s was created \n", this.name, this.surname, this.uuid);
     }
 
@@ -35,6 +36,12 @@ public class User {
     }
 
     public ArrayList<Account> getAccounts(Bank theBank) {
-        return theBank.getAccounts(this);
+        for (Account account : theBank.getAccounts()) {
+            if (account.getUser().equals(this) && !this.accounts.contains(account)) {
+                this.accounts.add(account);
+            }
+        }
+        return accounts;
     }
+
 }

@@ -42,19 +42,13 @@ public class Bank {
 
     public Account addNewAccount(User user){
         Random random = new Random();
-        Account account = new Account(
-                random.ints().iterator().next().toString(),
-                user);
+        Account account = new Account(Long.toString(Math.abs(random.ints().iterator().next())),user);
         this.accounts.add(account);
         return account;
     }
 
-    public ArrayList<Account> getAccounts(User user) {
-        ArrayList<Account> userAccounts = new ArrayList<>();
-        for (Account account : accounts){
-            if (account.getUser().equals(user)) userAccounts.add(account);
-        }
-        return userAccounts;
+    public ArrayList<Account> getAccounts() {
+        return accounts;
     }
 }
 
