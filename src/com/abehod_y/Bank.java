@@ -3,7 +3,6 @@ package com.abehod_y;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.UUID;
 
 public class Bank {
 

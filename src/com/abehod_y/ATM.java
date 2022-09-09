@@ -2,7 +2,6 @@ package com.abehod_y;
 
 
 import java.util.Map;
-import java.util.Random;
 import java.util.Scanner;
 import java.util.TreeMap;
 
@@ -15,9 +14,9 @@ public class ATM {
         User alex = swed.addNewUser("Alex", "Vasilyev", "4321");
         User michael = swed.addNewUser("Michael", "Smart", "4321");
 
-        Account yurysAccount1 = swed.addNewAccount(yura);
-        Account yurysAccount2 =  swed.addNewAccount(yura);
-        Account alexsAccount = swed.addNewAccount(alex);
+        swed.addNewAccount(yura);
+        swed.addNewAccount(yura);
+        swed.addNewAccount(alex);
 
         System.out.printf("\nWelcome to %s  \n", swed.getName());
 
@@ -64,8 +63,13 @@ public class ATM {
 
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
+            if (choice == 5) {
+//              Quit
+                System.exit(0);
+            }
             Account acc = null;
             if (user.getAccounts(swed).size() > 1) {
+//                Remove transfer button then
                 System.out.println("Which account do you want to use?");
                 for (int i = 0; i < user.getAccounts(swed).size(); i++) {
                     System.out.println(user.getAccounts(swed).get(i).toString(i+1));
@@ -84,16 +88,31 @@ public class ATM {
                 }
             } else if (choice == 2) {
 //              Withdraw
-
+                System.out.print("How much money do you want to withdraw? ");
+                double amount = scanner.nextDouble();
+                System.out.println(acc.withdrow(amount));
             } else if (choice == 3) {
 //              Deposit
-
+                System.out.print("How much money you want to deposit? ");
+                double amount = scanner.nextDouble();
+                System.out.println(acc.deposit(amount));
             } else if (choice == 4) {
 //              Transfer
-
-            } else if (choice == 5) {
-//              Quit
-                System.exit(0);
+                if (user.getAccounts(swed).size() == 1) {
+                    System.out.println("You cannot transfer money, cause you have only one account");
+                } else {
+                    System.out.println("For what account do you want transfer money to?");
+                    for (int i = 0; i < user.getAccounts(swed).size(); i++) {
+                        if (!user.getAccounts(swed).get(i).equals(acc)) {
+                            System.out.println(user.getAccounts(swed).get(i).toString(i + 1));
+                        }
+                    }
+                    System.out.print("Enter choice: ");
+                    int toAcc = scanner.nextInt();
+                    System.out.print("How much money do you want to transfer?  ");
+                    double transferAmount = scanner.nextDouble();
+                    System.out.println(acc.transfer(transferAmount, user.getAccounts(swed).get(toAcc - 1)));
+                }
             } else System.out.println("\nSorry, you should enter a number from 1 to 5");
 
         }
