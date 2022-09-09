@@ -20,6 +20,13 @@ public class Account {
         return this.user;
     }
 
+    public double getBalance() {
+        return balance;
+    }
+
+    public ArrayList<Transaction> getTransactions() {
+        return transactions;
+    }
 
     public String toString(int id) {
         return id + ")" +

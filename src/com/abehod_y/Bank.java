@@ -37,7 +37,9 @@ public class Bank {
     }
 
     public String getNewUserUuid() {
-        return UUID.randomUUID().toString().replace("-", "").substring(0, 8);
+        Random random = new Random();
+        int uuid = random.nextInt(999999);
+        return String.format("%06d", uuid);
     }
 
     public Account addNewAccount(User user){
