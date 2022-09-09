@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 public class ATM {
     public static void main(String[] args) {
-        //      Bank init
+
+//      Bank init
         Bank swed = new Bank("SwedBank");
         User yura = swed.addNewUser("Yura", "Abykhodau", "1234");
         User alex = swed.addNewUser("Alex", "Vasilyev", "4321");
@@ -18,12 +19,11 @@ public class ATM {
 
 //      User input and access check
         Scanner scanner = new Scanner(System.in);
-        boolean access = false;
         User user = null;
-        while (access == false) {
-            System.out.println("Enter User ID: ");
+        while (true) {
+            System.out.print("Enter User ID: ");
             String userUuid = scanner.nextLine();
-            System.out.println("Enter User pin: ");
+            System.out.print("Enter User pin: ");
             String userPin = scanner.nextLine();
             user = swed.getUser(userUuid, userPin);
             if (user != null) {
@@ -31,13 +31,14 @@ public class ATM {
             }
             System.out.println("Data is wrong, try again");
         }
-//
-//        for (Account account : swed.getAccounts(user)) {
-//            System.out.println(account.toString());
-//        }
-
+        System.out.printf("Welcome, %s %s, this is your accounts: \n", user.getName(), user.getSurname());
         for (int i = 0; i < swed.getAccounts(user).size(); i++) {
             System.out.println(swed.getAccounts(user).get(i).toString(i+1));
         }
+
+//        Menu what to do
+
+
+
     }
 }

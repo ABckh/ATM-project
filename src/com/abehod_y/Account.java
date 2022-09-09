@@ -24,7 +24,6 @@ public class Account {
     public String toString(int id) {
         return id + ")" +
                 " accountNumber='" + accountNumber + '\'' +
-                ", user=" + user.getName() + " " + user.getSurname() +
                 ", balance=" + balance;
     }
 }
