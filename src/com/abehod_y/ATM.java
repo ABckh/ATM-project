@@ -31,7 +31,7 @@ public class ATM {
     static Bank initBank(String name){
         //    Bank init
         Bank bank = new Bank(name);
-        User yura = bank.addNewUser("Yura", "Abykhodau", "1234");
+        User yura = bank.addNewUser("Yura", "Vasnetsov", "1234");
         User alex = bank.addNewUser("Alex", "Vasilyev", "4321");
         User michael = bank.addNewUser("Michael", "Smart", "4321");
 
