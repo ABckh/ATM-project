@@ -60,9 +60,10 @@ public class Account {
         } else {
             this.balance = total;
             inAccount.addBalance(amount);
-            this.transactions.add(new Transaction(amount, "Transfer to " + inAccount.getAccountNumber(),
+            this.transactions.add(new Transaction(amount, inAccount,
+                    "Transfer to " + inAccount.getAccountNumber(),
                     this.balance));
-            inAccount.transactions.add(new Transaction(amount, "Transfer from " + this.getAccountNumber(),
+            inAccount.transactions.add(new Transaction(amount, this, "Transfer from " + this.getAccountNumber(),
                     this.balance));
             return "Succesful, updated balance is " + this.balance;
         }

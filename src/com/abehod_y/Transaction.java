@@ -17,7 +17,7 @@ public class Transaction {
         this.total = total;
     }
 
-    public Transaction(double amount, Account inAccount, String description) {
+    public Transaction(double amount, Account inAccount, String description, double total) {
         this.amount = amount;
         this.inAccount = inAccount;
         this.date = new Date();
