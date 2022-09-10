@@ -1,3 +1,3 @@
 # ATM-project JAVA
 
-This is java program which imitates work of ATM-machine. Should be controlled only with numbers (My first experience working with java)
+This is java program which imitates work of ATM-machine, it should be controlled only with numbers (My first experience working with java)
